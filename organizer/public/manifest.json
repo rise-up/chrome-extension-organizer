@@ -1,0 +1,22 @@
+{
+	"manifest_version": 3,
+	"name": "RUP Organizer",
+	"version": "0.1",
+	"icons": {
+		"16": "images/icon-52.png",
+		"32": "images/icon-52.png",
+		"48": "images/icon-52.png",
+		"128": "images/icon-52.png"
+	},
+	"action": {
+		"default_popup": "index.html",
+		"default_title": "Organizer"
+	},
+	"host_permissions": [
+		"https://developer.chrome.com/*"
+	],
+	"permissions": [
+		"tabs",
+		"tabGroups"
+	]
+}
