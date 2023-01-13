@@ -16,7 +16,17 @@ limitations under the License.
 
 
 .App {
-	text-align: center;
+	background-color: #282c34;
+	height: 200px;
+	padding: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
 }
 
 .App-logo {
@@ -30,17 +40,6 @@ limitations under the License.
 	}
 }
 
-.App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
-}
-
 .App-link {
 	color: #61dafb;
 }
@@ -52,4 +51,59 @@ limitations under the License.
 	to {
 		transform: rotate(360deg);
 	}
+}
+
+.groups-container {
+	margin-bottom: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	gap: 10px;
+}
+
+.groups-button {
+	font-size: 14px;
+	padding: 4px 8px;
+	border-radius: 8px;
+	transition-duration: 0.4s;
+	color: black;
+	border: none;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;	
+}
+.groups-button:hover {
+	opacity: 0.8;
+}
+.groups-button:active {
+	opacity: 1;
+}
+
+.group-grey {
+	background-color: #DADCE0;
+}
+.group-blue {
+	background-color: #93B3F2;
+}
+.group-red {
+	background-color: #E49086;
+}
+.group-yellow {
+	background-color: #F6D674;
+}
+.group-green {
+	background-color: #91C799;
+}
+.group-pink {
+	background-color: #F091C8;
+}
+.group-purple {
+	background-color: #BB8BF1;
+}
+.group-cyan {
+	background-color: #90D7E9;
+}
+.group-orange {
+	background-color: #F0B07A;
 }
