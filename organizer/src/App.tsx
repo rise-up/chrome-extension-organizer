@@ -15,9 +15,17 @@ limitations under the License.
 */
 
 
-import { tab } from '@testing-library/user-event/dist/tab';
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
+
+
+// Localization
+const jp = navigator.language == "ja"
+const text = {
+	active: jp ? "アクティブ" : "Active",
+	archived: jp ? "アーカイブ済み" : "Archived",
+	noTabs: jp ? "使用する前にタブ グループを作成してください" : "Please create tab groups before using"
+}
 
 
 type GroupData = {
@@ -41,7 +49,9 @@ class App extends React.Component<any, any> {
 		console.log("-- START --")
 
 		this.state = {
+			groupsInitialized: false,
 			groups: [],
+			bookmarksInitialized: false,
 			bookmarks: []
 		}
 
@@ -77,6 +87,7 @@ class App extends React.Component<any, any> {
 				})
 	
 				this.setState({
+					groupsInitialized: true,
 					groups: all
 				})
 			});
@@ -91,6 +102,7 @@ class App extends React.Component<any, any> {
 
 					const nodes = children[0].children ?? []
 					this.setState({
+						bookmarksInitialized: true,
 						bookmarks: nodes.map(node => {
 							return {
 								title: node.title,
@@ -183,7 +195,10 @@ class App extends React.Component<any, any> {
 		// Delete bookmark
 		chrome.bookmarks.removeTree(bookmark.id)
 
-		this.update()
+		// Update
+		setTimeout(() => {
+			this.update()
+		}, 100)
 	}
 
 
@@ -202,13 +217,15 @@ class App extends React.Component<any, any> {
 			return <button key={i} className={"groups-button group-" + color} onClick={() => this.loadGroup(bookmark)}>{title}</button> 
 		})
 
+
 		return (
 			<div className="App">
-				{activeTitles.length > 0 ? "Active" : ""}
+				{this.state.groupsInitialized && this.state.bookmarksInitialized && activeTitles.length <= 0 && archivedTitles.length <= 0 ? text.noTabs : ""}
+				{activeTitles.length > 0 ? text.active : ""}
 				<div className="groups-container" style={{marginBottom: '10px'}}>
 					{activeTitles}
 				</div>
-				{archivedTitles.length > 0 ? "Archived" : ""}				
+				{archivedTitles.length > 0 ? text.archived : ""}				
 				<div className="groups-container">
 					{archivedTitles}
 				</div>

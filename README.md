@@ -1,2 +1,2 @@
 # chrome-extension-organizer
-Google Chrome extension to show/hide tabs
+Google Chrome extension to manage tab groups
