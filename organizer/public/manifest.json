@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "RUP Organizer",
-	"version": "0.1",
+	"version": "1.0",
 	"icons": {
 		"16": "images/icon-52.png",
 		"32": "images/icon-52.png",
