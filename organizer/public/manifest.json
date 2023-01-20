@@ -12,9 +12,6 @@
 		"default_popup": "index.html",
 		"default_title": "Organizer"
 	},
-	"host_permissions": [
-		"https://developer.chrome.com/*"
-	],
 	"permissions": [
 		"tabs",
 		"tabGroups",
