@@ -1,0 +1,8 @@
+{
+	"appName": {
+		"message": "RUP Organizer"
+	},
+	"appDesc": {
+		"message": "With RUP Organizer you can hide and show tab groups.\nTab groups that are hidden (archived) will be saved as bookmarks."
+	}
+  }
