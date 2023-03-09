@@ -46,7 +46,7 @@ class App extends React.Component<any, any> {
 	constructor(props: any) {
 		super(props)
 
-		console.log("-- Organizer V1.3 --")
+		console.log("-- Organizer V1.2 --")
 
 		this.state = {
 			groupsInitialized: false,
