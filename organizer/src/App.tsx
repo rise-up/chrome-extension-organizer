@@ -46,7 +46,7 @@ class App extends React.Component<any, any> {
 	constructor(props: any) {
 		super(props)
 
-		console.log("-- START --")
+		console.log("-- Organizer V1.3 --")
 
 		this.state = {
 			groupsInitialized: false,
@@ -60,7 +60,7 @@ class App extends React.Component<any, any> {
 
 
 	update() {
-
+	
 		// Groups
 		chrome.tabGroups.query({ windowId: chrome.windows.WINDOW_ID_CURRENT }, (groups) => {
 			const groupsIDs = new Map()
@@ -110,12 +110,12 @@ class App extends React.Component<any, any> {
 								children: node.children ?? []
 							} as BookmarkData
 						})
-					})		
+					})
 				})
 			} else {
 				this.setState({
 					bookmarksInitialized: true
-				})		
+				})
 			}
 		})
 	}
@@ -154,10 +154,32 @@ class App extends React.Component<any, any> {
 
 
 	saveGroup(group: GroupData) {
+
+		// Check tabs
+		var isBusy = false
+		group.tabs.forEach((tab, i: number) => {
+			var url = tab.url
+			if (!url)
+				url = tab.pendingUrl
+			if (!url)
+				isBusy = true
+		})
+		if (isBusy) {
+			console.log("saveGroup: Busy")
+			return
+		}
+
+		// Save
 		this.getRootBookmark((rootId: string) => {
 			this.getGroupBookmark(group, rootId, (folderId: string) => {
 				group.tabs.forEach((tab, i: number) => {
-					chrome.bookmarks.create({'title': tab.title ?? " ", 'url': tab.url ?? "", 'index': i, "parentId": folderId})
+					var url = tab.url
+					if (!url)
+						url = tab.pendingUrl
+						
+					console.log("saveGroup: URL = " + url)
+
+					chrome.bookmarks.create({'title': tab.title ?? " ", 'url': url, 'index': i, "parentId": folderId})
 					chrome.tabs.remove(tab.id ?? -1)
 				})
 
