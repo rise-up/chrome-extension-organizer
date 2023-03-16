@@ -180,13 +180,10 @@ class App extends React.Component<any, any> {
 					console.log("saveGroup: URL = " + url)
 
 					chrome.bookmarks.create({'title': tab.title ?? " ", 'url': url, 'index': i, "parentId": folderId})
-					chrome.tabs.remove(tab.id ?? -1)
+					chrome.tabs.remove(tab.id ?? -1).then(() => {
+						this.update()
+					})
 				})
-
-				// Update
-				setTimeout(() => {
-					this.update()
-				}, 300)
 			})
 		})
 	}
@@ -225,6 +222,11 @@ class App extends React.Component<any, any> {
 		setTimeout(() => {
 			this.update()
 		}, 100)
+
+		// Late Update
+		setTimeout(() => {
+			this.update()
+		}, 1000)
 	}
 
 
