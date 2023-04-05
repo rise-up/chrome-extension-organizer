@@ -4,5 +4,8 @@
 	},
 	"appDesc": {
 		"message": "Hide and show tab groups.\nTab groups that are hidden (archived) will be saved as bookmarks."
+	},
+	"extensionTitle": {
+		"message": "RUP Organizer"
 	}
 }

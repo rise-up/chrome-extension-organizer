@@ -1,6 +1,6 @@
 {
 	"manifest_version": 3,
-	"version": "1.2",
+	"version": "1.2.1",
 	"name": "__MSG_appName__",
 	"description": "__MSG_appDesc__",
 	"default_locale": "en",
@@ -12,7 +12,7 @@
 	},
 	"action": {
 		"default_popup": "index.html",
-		"default_title": "Organizer"
+		"default_title": "__MSG_extensionTitle__"
 	},
 	"permissions": [
 		"tabs",
